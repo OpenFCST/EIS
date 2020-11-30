@@ -1,0 +1,78 @@
+# ====================================================================
+# This is an input data file for Fitting_HF_impedance_spectra.py v0.1.
+# Please refer to README.rst for deailed documentation.
+#
+# This particular data file is for the non-graphical H2/O2 fitting method.
+# Use data_H2N2_graphical.txt for the graphical H2/N2 method and
+# data_H2N2.txt for the non-graphical H2/N2 method.
+#
+# Copyright 2020 Aslan Kosakian, Marc Secanell
+# Distributed under the MIT license. See LICENSE.txt for details.
+# ====================================================================
+
+# Input file with impedance data. Check format in the documentation.
+# Provide the relative path from the location of the Python script.
+Input file = Input/Example_data/EIS_results_MEA_sp_const_sp_ACL_x1e4_0p01Apcm2.txt
+
+# Name of the output file that will contain the fitted impedance
+Output file = Fitted_EIS_results_MEA_sp_const_sp_ACL_x1e4_0p01Apcm2.txt
+
+# The fitting method. Options are: H2_O2, H2_N2, H2_N2_graphical.
+# Note: this parameter file is for the H2_O2 method only.
+Fitting method = H2_O2
+
+# This value is subtracted from the real impedance to correct for
+# the ohmic resistance of cell components that appears in the HFR.
+# If the input spectrum represents a catalyst layer, supply 0.
+# If the input spectrum represents a full cell, supply total ohmic
+# resistance of all cell components except catalyst layers.
+HFR correction, mOhm*cm2 = 85.798200859
+
+# Catalyst-layer thickness, um
+Catalyst-layer thickness, um = 4.5
+
+# Current density at which impedance was measured, A/cm2.
+Current density, A/cm2 = 0.01008102871240325
+
+# Volumetric double-layer capacitance, F/cm3
+Volumetric double-layer capacitance, F/cm3 = 54.0
+
+# Approximate Tafel slope, V.
+Tafel slope, V = 0.060860837781427354
+
+# Cutoff value of real impedance, mOhm*cm2.
+# Fitting of the high-frequency linear branch will be performed
+# between the HFR and this value.
+Real impedance cutoff, mOhm*cm2 = 120
+
+# Threshold within which the HFR-corrected real and imaginary
+# parts of impedance must be equal in order for a particular
+# part of a spectrum to be recognized as linear.
+# Example: enter 0.02 for 2%
+Linear branch threshold = 0.02
+
+# Search grid for electronic conductivity, S/cm.
+Minimum electronic conductivity, S/cm = 0.1
+Maximum electronic conductivity, S/cm = 7
+Electronic-conductivity step size, S/cm = 0.1
+
+# Same as above, but for protonic conductivity, S/cm.
+Minimum protonic conductivity, S/cm = 0.0001
+Maximum protonic conductivity, S/cm = 0.004
+Protonic-conductivity step size, S/cm = 0.0001
+
+# Method for computing residual
+# Options are:
+# abs     - absolute difference (magnitude of Z_input-Z_model),
+# rel     - relative difference (absolute difference normalized by Z_model)
+# rel_mag - absolute difference normalized by the magnitude of Z_model
+Residual method = rel_mag
+
+# If True, frequencies will be shown on a log scale in the Bode plot
+Use log scale in Bode plot = False
+
+# If True, impedance will be computed with the fitted conductivities at all
+# input frequencies instead of only those corresponding to the linear branch.
+# The resulting fitted impedance is saved to the output file.
+# Only used in the non-graphical H2_O2 and H2_N2 methods.
+Output whole fitted spectrum = False
